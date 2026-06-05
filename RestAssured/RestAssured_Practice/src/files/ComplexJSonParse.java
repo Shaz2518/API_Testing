@@ -1,0 +1,66 @@
+package files;
+
+import io.restassured.path.json.JsonPath;
+
+public class ComplexJSonParse {
+
+	public static void main(String[] args) {
+	
+		JsonPath js = new JsonPath(JSON_Body.coursePrice());
+		
+		//Get course count
+		int courseCount = js.getInt("courses.size()");
+		System.out.println("Course Count: " + courseCount);
+		
+		//Print purchase amount
+		int purchaseAmt = js.getInt("dashboard.purchaseAmount");
+		System.out.println("Puchase Amount: " + purchaseAmt);
+		
+		//Get Title of firstcourse
+		String firstTitle = js.getString("courses[0].title");
+		System.out.println("First course Title: " + firstTitle);
+		
+		
+		
+		//Print courses title and prices
+		for(int i=0; i<courseCount; i++)
+		{
+			System.out.println("Course Title: " +  js.getString("courses["+i+"].title") );
+			System.out.println("Course Price: " + js.getInt("courses["+i+"].price"));
+		}
+		
+		//Get course copied if title is Cypress
+		for(int i=0; i<courseCount; i++)
+		{
+			String courseTitle =  js.getString("courses["+i+"].title");
+			if(courseTitle.equalsIgnoreCase("Cypress"))
+			{
+				int copies = js.getInt("courses["+i+"].copies");
+				System.out.println("Course copy: " + courseTitle + " " + copies);
+				break;
+			}
+		}
+		
+		//Check if courses price is same as purchaseAmount
+		int sum =0;
+		for(int i=0; i<courseCount; i++)
+		{
+			int coursePrice = js.getInt("courses["+i+"].price");
+			int copies = js.getInt("courses["+i+"].copies");
+			int finalcoursePrice = coursePrice * copies;
+			sum = sum + finalcoursePrice;
+			System.out.println(sum);
+			
+		}
+		
+		boolean flag = false;
+		if(sum == purchaseAmt)
+		{
+			flag = true;
+			System.out.println(flag);
+		}
+		
+
+	}
+
+}
