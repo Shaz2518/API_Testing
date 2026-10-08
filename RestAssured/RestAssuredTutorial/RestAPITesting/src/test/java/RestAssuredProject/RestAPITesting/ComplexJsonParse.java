@@ -23,7 +23,7 @@ public class ComplexJsonParse {
 		String firstCourseTitle = json.getString("courses[0].title");
 		System.out.println("First Course Title: " + firstCourseTitle);
 		
-		//Get title of all course
+		//Get title and price of all course
 		for(int i=0; i<courseCount; i++)
 		{
 			String title = json.get("courses["+i+"].title");
@@ -31,7 +31,7 @@ public class ComplexJsonParse {
 			System.out.println(title + ": " + coursePrice);
 		}
 		
-		//Get copied sold by RPA
+		//Get copies sold by RPA
 		for(int i=0; i<courseCount; i++)
 		{
 			String title = json.get("courses["+i+"].title");
