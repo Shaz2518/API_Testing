@@ -1,0 +1,44 @@
+package basic_Crud;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import files.JSON_Body;
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+
+public class Get_Place_Details {
+
+	public static void main(String[] args) {
+	
+		RestAssured.baseURI = "https://rahulshettyacademy.com";
+		
+		String response = 	given()			
+				.queryParam("key", "qaclick123").header("Content-Type","application/json")
+			.body(JSON_Body.JSONBody())
+			
+			.when().post("/maps/api/place/add/json")
+			
+			.then().assertThat().statusCode(200).body("scope", equalTo("APP"))
+			.header("Server","Apache/2.4.52 (Ubuntu)").extract().response().asString();
+		
+		//System.out.println(response);
+		
+		//This will parse JSON and get place id
+		JsonPath js = new JsonPath(response);
+		String pid = js.getString("place_id");
+		System.out.println("PlaceID = " + pid);
+		
+		//Get place address
+		String getDetails = given().queryParam("key", "qaclick123").queryParam("placeid", pid)
+				.when().get("/maps/api/place/add/json")
+				.then().assertThat().statusCode(200).extract().response().asString();
+		
+		JsonPath getAddress = new JsonPath(getDetails);
+		String address = getAddress.getString("address");
+		System.out.println("Address:  " + address );
+		
+
+	}
+
+}

@@ -1,0 +1,26 @@
+package codingProblems;
+
+import java.util.Scanner;
+
+public class ReverseANumber {
+
+	public static void main(String[] args) {
+		System.out.println("Enter 2 numbers");
+		Scanner scr = new Scanner(System.in);
+		int num = scr.nextInt();
+		int reverseNum = 0;
+		int lastDigit;
+		
+		while(num >0)
+		{
+			lastDigit = num % 10;
+			reverseNum = reverseNum * 10 + lastDigit;
+			num = num /10;
+		}
+		
+		System.out.println("Reverse Number: " + reverseNum);
+		
+
+	}
+
+}

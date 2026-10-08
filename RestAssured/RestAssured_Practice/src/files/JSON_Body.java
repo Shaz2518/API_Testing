@@ -51,5 +51,18 @@ public class JSON_Body {
 				+ "}";
 		
 	}
+	
+	public static String addBook()
+	{
+		String jsonPayload = "{\r\n"
+				+ "\"name\":\"Learn Appium Automation with Java\",\r\n"
+				+ "\"isbn\":\"bcd\",\r\n"
+				+ "\"aisle\":\"227\",\r\n"
+				+ "\"author\":\"John foe\"\r\n"
+				+ "}\r\n"
+				+ "";
+		return jsonPayload;
+
+	}
 
 }

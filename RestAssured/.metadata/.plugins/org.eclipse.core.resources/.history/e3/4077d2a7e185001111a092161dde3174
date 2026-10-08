@@ -1,0 +1,10 @@
+package codingProblems;
+
+public class SwapTwoNumbers_WithoutTemp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

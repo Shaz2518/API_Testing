@@ -1,0 +1,33 @@
+package files;
+
+import io.restassured.path.json.JsonPath;
+
+public class ComplexJSonParse {
+
+	public static void main(String[] args) {
+	
+		JsonPath js = new JsonPath(JSON_Body.coursePrice());
+		
+		//Get course count
+		int courseCount = js.getInt("courses.size()");
+		System.out.println("Course Count: " + courseCount);
+		
+		//Print purchase amount
+		String purchaseAmt = js.getString("dashboard.purchaseAmount");
+		System.out.println("Puchase Amount: " + purchaseAmt);
+		
+		//Get Title of firstcourse
+		String firstTitle = js.getString("courses[0].title");
+		System.out.println("First course Title: " + firstTitle);
+		
+		//Print courses title and prices
+		for(int i=0; i<courseCount; i++)
+		{
+			System.out.println("Course Title: " +  js.getString("courses["+i+"].title") );
+			System.out.println("Course Price: " + js.getInt("courses["+i+"].price"));
+		}
+		
+
+	}
+
+}

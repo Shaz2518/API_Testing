@@ -1,0 +1,17 @@
+package files;
+
+import io.restassured.path.json.JsonPath;
+
+public class ComplexJSonParse {
+
+	public static void main(String[] args) {
+	
+		JsonPath js = new JsonPath(JSON_Body.coursePrice());
+		
+		int courseCount = js.getInt("courses.size()");
+		System.out.println("Course Count: " + courseCount);
+		
+
+	}
+
+}
