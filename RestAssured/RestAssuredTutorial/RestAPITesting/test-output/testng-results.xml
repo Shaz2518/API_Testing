@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-10-09T22:05:19 IST" name="Default suite" finished-at="2026-10-09T22:05:25 IST" duration-ms="6273">
+    <groups>
+    </groups>
+    <test started-at="2026-10-09T22:05:19 IST" name="Default test" finished-at="2026-10-09T22:05:25 IST" duration-ms="6273">
+      <class name="files.DataFromExternalJson">
+        <test-method signature="addNewPlace()[pri:0, instance:files.DataFromExternalJson@49139829]" started-at="2026-10-09T22:05:19 IST" name="addNewPlace" finished-at="2026-10-09T22:05:25 IST" duration-ms="6177" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addNewPlace -->
+      </class> <!-- files.DataFromExternalJson -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

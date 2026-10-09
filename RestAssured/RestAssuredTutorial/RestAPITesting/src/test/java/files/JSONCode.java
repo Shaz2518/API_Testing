@@ -12,7 +12,7 @@ public class JSONCode {
 				+ "  \"accuracy\": 50,\r\n"
 				+ "  \"name\": \"Shaikh House\",\r\n"
 				+ "  \"phone_number\": \"(+91) 983 893 3937\",\r\n"
-				+ "  \"address\": \"29, Mumbai, Maharashtra\",\r\n"
+				+ "  \"address\": \"29, Gachibowli, Hyderabad\",\r\n"
 				+ "  \"types\": [\r\n"
 				+ "    \"Family Business\",\r\n"
 				+ "    \"family\"\r\n"
@@ -50,6 +50,19 @@ public class JSONCode {
 				+ "]\r\n"
 				+ "\r\n"
 				+ "}";
+	}
+	
+	public static String addBookJson(String isbn,String aisle)
+	{
+		String bookAdd = "{\r\n"
+				+ "\r\n"
+				+ "\"name\":\"Selenium Architecture\",\r\n"
+				+ "\"isbn\":\""+isbn+"\",\r\n"
+				+ "\"aisle\":\""+aisle+"\",\r\n"
+				+ "\"author\":\"Steve Albert\"\r\n"
+				+ "}\r\n"
+				+ "";
+		return bookAdd;
 	}
 
 }
