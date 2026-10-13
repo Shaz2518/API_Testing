@@ -2,6 +2,7 @@ package oAuth_GrantAccess;
 import static io.restassured.RestAssured.given;
 
 import io.restassured.path.json.JsonPath;
+import pojoClasses.GetCourseDetails;
 public class OAuth_ClientCredentials {
 
 	public static void main(String[] args) {
@@ -23,7 +24,8 @@ public class OAuth_ClientCredentials {
 		String courseDetails = given().log().all().queryParam("access_token", accessToken)
 		.get("https://rahulshettyacademy.com/oauthapi/getCourseDetails")
 		.then().log().all().extract().response().asString();
-		System.out.println("========CourseDetails===============" + "\n" + courseDetails);
+		
+		System.out.println(courseDetails);
 	}
 
 }
