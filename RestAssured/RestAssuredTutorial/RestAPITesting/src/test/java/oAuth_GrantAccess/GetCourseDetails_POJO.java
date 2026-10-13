@@ -45,7 +45,7 @@ public class GetCourseDetails_POJO {
 			if (webCourse.get(i).getCourseTitle().contains("Selenium")) {
 				String courseTitle = webCourse.get(i).getCourseTitle();
 				String coursePrice = webCourse.get(i).getPrice();
-				System.out.println(courseTitle + "=" + coursePrice);
+				System.out.println(courseTitle + "= " + coursePrice);
 			}
 		
 		System.out.println("=========================================================");
@@ -54,7 +54,7 @@ public class GetCourseDetails_POJO {
 		for (int i = 0; i < webCourse.size(); i++) {
 			String courseTitle = webCourse.get(i).getCourseTitle();
 			String coursePrice = webCourse.get(i).getPrice();
-			System.out.println(courseTitle + "=" + coursePrice);
+			System.out.println(courseTitle + "= " + coursePrice);
 		}
 	}
 
