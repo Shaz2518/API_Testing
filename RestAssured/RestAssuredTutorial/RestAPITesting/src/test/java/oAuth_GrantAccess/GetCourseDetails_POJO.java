@@ -5,7 +5,6 @@ import static io.restassured.RestAssured.given;
 import java.util.List;
 
 import io.restassured.path.json.JsonPath;
-import pojoClasses.Courses;
 import pojoClasses.GetCourseDetails;
 import pojoClasses.webAutomation;
 
