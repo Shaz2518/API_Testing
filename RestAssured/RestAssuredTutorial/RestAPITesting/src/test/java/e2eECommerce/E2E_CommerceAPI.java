@@ -74,19 +74,36 @@ public class E2E_CommerceAPI {
 		System.out.println(orderID);
 
 		// View Product
-
+		RequestSpecification viewProdBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+				.addHeader("Authorization", prodToken).setContentType(ContentType.JSON).build();
+		RequestSpecification viewProdReq = given().log().all().spec(viewProdBaseReq).queryParam("id", orderID);
+		String viewOrderDetails = viewProdReq.when().get("api/ecom/order/get-orders-details").then().log().all()
+				.extract().response().asString();
+		JsonPath viewOrder = new JsonPath(viewOrderDetails);
+		String viewOrderMsg = viewOrder.get("message");
+		System.out.println(viewOrderMsg);
+		
 		// Delete Product
 		RequestSpecification deleteBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
 				.addHeader("Authorization", prodToken).setContentType(ContentType.JSON).build();
 		RequestSpecification deleteProduct = given().log().all().spec(deleteBaseReq).pathParam("productId", productID);
-		String deleteResp = deleteProduct.when().delete("api/ecom/product/delete-product/{productId}").then().log().all().extract()
-				.response().asString();
+		String deleteResp = deleteProduct.when().delete("api/ecom/product/delete-product/{productId}").then().log()
+				.all().extract().response().asString();
 
 		JsonPath deleteDetails = new JsonPath(deleteResp);
 		String deleteMsg = deleteDetails.get("message");
 		System.out.println(deleteMsg);
 		Assert.assertEquals(deleteMsg, "Product Deleted Successfully");
 
+		// Delete Order
+		RequestSpecification deleteOrderReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+				.addHeader("Authorization", prodToken).setContentType(ContentType.JSON).build();
+		RequestSpecification deleteOrder = given().log().all().spec(deleteOrderReq).pathParam("orderID", orderID);
+		String deleteOrderResp = deleteOrder.when().delete("api/ecom/order/delete-order/{orderID}").then().log().all()
+				.extract().response().asString();
+		JsonPath deleteOrderDetails = new JsonPath(deleteOrderResp);
+		String deleteOrderMsg = deleteOrderDetails.get("message");
+		System.out.println(deleteOrderMsg);
 	}
 
 }
