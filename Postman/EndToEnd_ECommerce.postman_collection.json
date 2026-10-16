@@ -11,7 +11,12 @@
       "name": "UserLogin",
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{json_web_token_0cg2}}"
+          }
+        ],
         "body": {
           "mode": "raw",
           "raw": "{\r\n    \"userEmail\": \"demonslayer@gmail.com\",\r\n    \"userPassword\": \"DemonSlayer123\"\r\n}",
@@ -41,10 +46,73 @@
     {
       "name": "CreateProduct",
       "request": {
-        "method": "GET",
-        "header": [],
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{json_web_token_0cg2}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "productName",
+              "value": "Laptop",
+              "type": "text"
+            },
+            {
+              "key": "productAddedBy",
+              "value": "6aa5376fe7cd69710fd49fdc",
+              "type": "text"
+            },
+            {
+              "key": "productCategory",
+              "value": "Tech Product",
+              "type": "text"
+            },
+            {
+              "key": "productSubCategory",
+              "value": "Device",
+              "type": "text"
+            },
+            {
+              "key": "productPrice",
+              "value": "50000",
+              "type": "text"
+            },
+            {
+              "key": "productDescription",
+              "value": "Laptop for Office",
+              "type": "text"
+            },
+            {
+              "key": "productFor",
+              "value": "Everyone",
+              "type": "text"
+            },
+            {
+              "key": "productImage",
+              "type": "file",
+              "src": [
+                "postman-cloud:///1f1c987a-3b14-4df0-9f84-0afd9051649b"
+              ]
+            }
+          ]
+        },
         "url": {
-          "raw": ""
+          "raw": "https://rahulshettyacademy.com/api/ecom/product/add-product",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "api",
+            "ecom",
+            "product",
+            "add-product"
+          ]
         }
       },
       "response": []
@@ -53,10 +121,15 @@
       "name": "PlaceOrder",
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{json_web_token_0cg2}}"
+          }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    country: \"India\", \r\n    productOrderedId: \"6ad25fd393b084c41f541be8\"\r\n}",
+          "raw": "{\r\n    \"orders\": [\r\n        {\r\n            \"country\": \"India\",\r\n            \"productOrderedId\": \"6ad26a9b93b084c41f54323d\"\r\n        }\r\n    ]\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -84,9 +157,31 @@
       "name": "ViewOrder",
       "request": {
         "method": "GET",
-        "header": [],
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{json_web_token_0cg2}}"
+          }
+        ],
         "url": {
-          "raw": ""
+          "raw": "https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=6ad26ab293b084c41f543274",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "api",
+            "ecom",
+            "order",
+            "get-orders-details"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "6ad26ab293b084c41f543274"
+            }
+          ]
         }
       },
       "response": []
@@ -94,10 +189,27 @@
     {
       "name": "DeleteProduct",
       "request": {
-        "method": "GET",
-        "header": [],
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{json_web_token_0cg2}}"
+          }
+        ],
         "url": {
-          "raw": ""
+          "raw": "https://rahulshettyacademy.com/api/ecom/product/delete-product/6ad26a9b93b084c41f54323d",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "api",
+            "ecom",
+            "product",
+            "delete-product",
+            "6ad26a9b93b084c41f54323d"
+          ]
         }
       },
       "response": []
