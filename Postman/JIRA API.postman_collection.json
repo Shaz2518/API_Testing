@@ -1,0 +1,108 @@
+{
+  "info": {
+    "_postman_id": "db54c3c9-3b58-4deb-b09c-682026fe2860",
+    "name": "JIRA API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55172770",
+    "_collection_link": "https://go.postman.co/collection/55172770-db54c3c9-3b58-4deb-b09c-682026fe2860?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create Issue_Bug",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{basic_auth_093z}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fields\": {\r\n       \"project\":\r\n       {\r\n          \"key\": \"SCRUM\"\r\n       },\r\n       \"summary\": \"Dropdown is not working\",\r\n       \"issuetype\": {\r\n          \"name\": \"Bug\"\r\n       }\r\n   }\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://shaziyashaikh2518-1791730051584.atlassian.net/rest/api/3/issue",
+          "protocol": "https",
+          "host": [
+            "shaziyashaikh2518-1791730051584",
+            "atlassian",
+            "net"
+          ],
+          "path": [
+            "rest",
+            "api",
+            "3",
+            "issue"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Attachment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Atlassian-Token",
+            "value": "no-check"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{basic_auth_093z}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/C:/Users/localadminuser/Downloads/musa-ortac-4jAhqZRzsVI-unsplash.jpg"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://shaziyashaikh2518-1791730051584.atlassian.net/rest/api/3/issue/10037/attachments",
+          "protocol": "https",
+          "host": [
+            "shaziyashaikh2518-1791730051584",
+            "atlassian",
+            "net"
+          ],
+          "path": [
+            "rest",
+            "api",
+            "3",
+            "issue",
+            "10037",
+            "attachments"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "basic_auth_12d2",
+      "secret": true
+    },
+    {
+      "key": "basic_auth_093z",
+      "secret": true
+    }
+  ]
+}

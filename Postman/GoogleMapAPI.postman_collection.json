@@ -1,0 +1,185 @@
+{
+  "info": {
+    "_postman_id": "0f155f03-7e6d-4951-a98c-7deaa62d8498",
+    "name": "GoogleMapAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55172770",
+    "_collection_link": "https://go.postman.co/collection/55172770-0f155f03-7e6d-4951-a98c-7deaa62d8498?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AddPlace",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"location\": {\r\n    \"lat\": -38.383494,\r\n    \"lng\": 33.427362\r\n  },\r\n  \"accuracy\": 50,\r\n  \"name\": \"Shaikh House\",\r\n  \"phone_number\": \"(+91) 983 893 3937\",\r\n  \"address\": \"29, GachoBowli, Hyderabad\",\r\n  \"types\": [\r\n    \"Family Business\",\r\n    \"family\"\r\n  ],\r\n  \"website\": \"http://google.com\",\r\n  \"language\": \"English-IN\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "maps",
+            "api",
+            "place",
+            "add",
+            "json"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "qaclick123"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetPlace",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=1c32850c426f4ccc6860040695ff3341",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "maps",
+            "api",
+            "place",
+            "get",
+            "json"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "qaclick123",
+              "type": "text"
+            },
+            {
+              "key": "place_id",
+              "value": "1c32850c426f4ccc6860040695ff3341",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DeletePlace",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \r\n    \"place_id\": \"99113e2da1bda86bc626038dc9bd89f9\"\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "maps",
+            "api",
+            "place",
+            "delete",
+            "json"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "qaclick123"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UpdatePlace",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"place_id\":\"51bc16219b61d79e04e6670b64806f1e\",\r\n\"address\":\"South Bombay, Mumbai\",\r\n\"key\":\"qaclick123\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://rahulshettyacademy.com/maps/api/place/update/json?key=qaclick123&place_id=51bc16219b61d79e04e6670b64806f1e",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "maps",
+            "api",
+            "place",
+            "update",
+            "json"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "qaclick123"
+            },
+            {
+              "key": "place_id",
+              "value": "51bc16219b61d79e04e6670b64806f1e"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
