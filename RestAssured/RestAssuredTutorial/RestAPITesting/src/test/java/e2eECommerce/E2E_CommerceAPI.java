@@ -10,10 +10,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.testng.Assert;
+
 import e2eCommercePOJOClasses.LoginAPI;
 import e2eCommercePOJOClasses.LoginToken;
 import e2eCommercePOJOClasses.OrderDetails;
 import e2eCommercePOJOClasses.Orders;
+import e2eCommercePOJOClasses.PlaceOrder;
 
 public class E2E_CommerceAPI {
 
@@ -37,7 +40,7 @@ public class E2E_CommerceAPI {
 		RequestSpecification prodBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
 				.addHeader("Authorization", prodToken).build();
 		RequestSpecification prodReq = given().log().all().spec(prodBaseReq).param("productName", "Jeans")
-				.param("productAddedBy", "UserID").param("productCategory", "Fashion")
+				.param("productAddedBy", UserID).param("productCategory", "Fashion")
 				.param("productSubCategory", "Pants").param("productPrice", "799")
 				.param("productDescription", "Blue Denim Jeans").param("productFor", "Women").multiPart("productImage",
 						new File("C:\\Users\\localadminuser\\Downloads\\510uTHyDqGL._AC_UF1000,1000_QL80_.jpg"));
@@ -62,9 +65,27 @@ public class E2E_CommerceAPI {
 		order.setOrders(orderValue);
 
 		RequestSpecification placeOrder = given().log().all().spec(cartBaseReq).body(order);
-		String placeOrderResp = placeOrder.when().post("api/ecom/order/create-order").then().extract().response()
-				.asString();
+		PlaceOrder placeOrderResp = placeOrder.when().post("api/ecom/order/create-order").then().extract().response()
+				.as(PlaceOrder.class);
+		List<PlaceOrder> placeOrderDetails = new ArrayList<PlaceOrder>();
+		placeOrderDetails.add(placeOrderResp);
+		String orderID = placeOrderResp.getOrders().get(0);
 		System.out.println(placeOrderResp);
+		System.out.println(orderID);
+
+		// View Product
+
+		// Delete Product
+		RequestSpecification deleteBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+				.addHeader("Authorization", prodToken).setContentType(ContentType.JSON).build();
+		RequestSpecification deleteProduct = given().log().all().spec(deleteBaseReq).pathParam("productId", productID);
+		String deleteResp = deleteProduct.when().delete("api/ecom/product/delete-product/{productId}").then().log().all().extract()
+				.response().asString();
+
+		JsonPath deleteDetails = new JsonPath(deleteResp);
+		String deleteMsg = deleteDetails.get("message");
+		System.out.println(deleteMsg);
+		Assert.assertEquals(deleteMsg, "Product Deleted Successfully");
 
 	}
 
